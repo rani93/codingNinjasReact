@@ -32,6 +32,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 
 // example  {loggedIn && <p> lastvalue</p>}
 
+// or is opposite of and operator
+
+
 
 
 
