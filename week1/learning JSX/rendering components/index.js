@@ -102,13 +102,24 @@ function Cars(){
 }
 
 function App(){
-    return(
-        <>
-        <Students/>
-        <Cars/>
-        </>
+    // return(
+    //     <>
+    //     <Students/>
+    //     <Cars/>
+    //     </>
         
-    )
+    // )
+
+    //Rendering the components based on based on some conditions is called conditional rendering
+    let showcase = false;
+    if(showcase){
+        return(
+            <Students/>
+        )
+    }
+    else{
+        return <Cars/>
+    }
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
