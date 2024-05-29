@@ -2,10 +2,21 @@ let score = 0;
 let wicket = 0;
 
 function addSum(num){
+    if(wicket<10)
+        {score+=num;
+            element.render(<App/>)
+        }
     
-    score+=num;
-    element.render(<App/>)
+    
 
+}
+
+function addWicket(){
+    if(wicket<10)
+    {wicket+=1;
+        element.render(<App/>)
+    }
+    
 }
 const App=()=>(
     <>
@@ -18,7 +29,7 @@ const App=()=>(
         <button onClick={()=>{addSum(4)}}>4</button>
         <button onClick={()=>{addSum(5)}}>5</button>
         <button onClick={()=>{addSum(6)}}>6</button>
-        <button onClick={()=>{addSum()}}>wicket</button>
+        <button onClick={()=>{addWicket()}}>wicket</button>
 
     </div>
     </>
