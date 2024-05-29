@@ -23,10 +23,23 @@ function addWicket(){
     }
     
 }
+const Result =()=>(
+    
+    <div>
+        {
 
+            ballWiseResult.map((res,index)=>(
+            <>
+            {(index%6 ===0 ? <br></br>: null)}
+            <span key={index}>{res===0 ? <strong>.</strong>:res==="W"? <span>W</span>: res} </span> &nbsp; &nbsp;
+            </>))
+        }
+    </div>
+)
 const  ScoreButton = ()=>(
 
     <div>
+        <button onClick={()=>{addSum(0)}}>0</button>
         <button onClick={()=>{addSum(1)}}>1</button>
         <button onClick={()=>{addSum(2)}}>2</button>
         <button onClick={()=>{addSum(3)}}>3</button>
@@ -43,6 +56,7 @@ const App=()=>(
     <h1>SCORE KEEPER</h1>
     <h2>SCORE:{score}/{wicket}</h2>
     <ScoreButton/>
+    <Result/>
     </>
     
 
