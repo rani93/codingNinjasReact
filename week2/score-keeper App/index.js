@@ -31,7 +31,9 @@ const Result =()=>(
             ballWiseResult.map((res,index)=>(
             <>
             {(index%6 ===0 ? <br></br>: null)}
-            <span key={index}>{res===0 ? <strong>.</strong>:res==="W"? <span>W</span>: res} </span> &nbsp; &nbsp;
+            <span style={res === "W" ? { color: 'red' } : {}}> {/* Corrected style object */}
+                        {res === 0 ? <strong>.</strong> : res}
+                    </span> &nbsp; &nbsp;
             </>))
         }
     </div>
