@@ -6,7 +6,7 @@ let ballWiseResult =[];
 function addSum(num){
     if(wicket<10)
         {
-            ballWiseResult.push(num);
+           // ballWiseResult.push(num);
             score+=num;
             hit =num;
             element.render(<App/>)
@@ -19,7 +19,7 @@ function addSum(num){
 function addWicket(){
     if(wicket<10)
     {
-        ballWiseResult.push("W");
+      //  ballWiseResult.push("W");
         wicket+=1;
         hit = "W";
         element.render(<App/>)
@@ -34,13 +34,24 @@ function addWicket(){
 //             ballWiseResult.map((res,index)=>(
 //             <>
 //             {(index%6 ===0 ? <br></br>: null)}
-//             <span style={res === "W" ? { color: 'red' } : {}}> {/* Corrected style object */}
+//             <span style={res === "W" ? { color: 'red' } : {}}> Corrected style object
 //                         {res === 0 ? <strong>.</strong> : res}
 //                     </span> &nbsp; &nbsp;
 //             </>))
 //         }
 //     </div>
 // )
+
+const Result = ()=>{
+    <div>
+        {ballWiseResult.map((res, index)=>(
+            <>
+            {(index % 6 === 0 ? <br></br> : null)}
+            <span key ={index}>{res ===0 ? <strong>.</strong> : res} </span>&nbsp;&nbsp;&nbsp;&nbsp;
+            </>
+        ))}
+    </div>
+}
 const  ScoreButton = ()=>(
 
     <div>
@@ -58,13 +69,14 @@ const  ScoreButton = ()=>(
 )
 function HandleEvent(event){
 event.preventDefault();
+score+=hit;
 ballWiseResult.unshift( hit);///here is the new edition 
 element.render(<App/>)                     
 }
 const Form =()=>(
     <form onSubmit = {HandleEvent}>
         <input value ={hit}/>&nbsp;
-        <input />
+        <input/>
         <button>Submit</button>
 
     </form>
