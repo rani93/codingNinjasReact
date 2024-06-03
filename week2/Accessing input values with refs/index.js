@@ -69,7 +69,7 @@ const  ScoreButton = ()=>(
 )
 function HandleEvent(event){
 event.preventDefault();
-score+=hit;
+// score+=hit;
 ballWiseResult.unshift( hit);///here is the new edition 
 element.render(<App/>)                     
 }
