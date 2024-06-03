@@ -78,7 +78,14 @@ else{
     score+=hit;
 }
 
-ballWiseResult.unshift( hit);///here is the new edition 
+ballWiseResult.unshift(
+
+//<span>{hit}{","}{inputRef.current.value}</span>
+// another method to do this
+
+<span>{`${hit}, ${inputRef.current.value}`}</span>
+
+);///here is the new edition 
 console.log(inputRef.current.value);
 element.render(<App/>)       
 
