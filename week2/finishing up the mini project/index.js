@@ -86,6 +86,9 @@ ballWiseResult.unshift(
 <span>{`${hit}, ${inputRef.current.value}`}</span>
 
 );///here is the new edition 
+
+hit =0;
+inputRef.current.value = " ";
 console.log(inputRef.current.value);
 element.render(<App/>)       
 
