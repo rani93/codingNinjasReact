@@ -17,11 +17,12 @@
   <body>
     <div id="root"></div>
 
-    <script type="text/babel">
-        let quote = React.createRef();
-        let name = React.createRef();
+<!-- approach one with form tag -->
 
+    <!-- <script type="text/babel">
       const quotes = [];
+      const nameRef = React.createRef();
+      const quoteRef = React.createRef();
 
       const clearInputs = () => {
         nameRef.current.value = "";
@@ -29,27 +30,52 @@
       };
 
       // create handleQuote function here
-      const handleQuote=()=>{
+    	const handleQuote = (e) => {
+        const name = nameRef.current.value;
+        const quote = quoteRef.current.value;
 
+        if (!name || !quote) return;
+        if (e.key !== "Enter") return;
+        quotes.unshift({ name, quote });
+        clearInputs();
+        rootElement.render(<App />);
+      };
+      
+            const handleSubmit = (e) => {
+        e.preventDefault();
+        const name = nameRef.current.value;
+        const quote = quoteRef.current.value;
 
-      }
+        if (!name || !quote) return;
 
+        quotes.unshift({ name, quote });
+        clearInputs();
+        rootElement.render(<App />);
+      };
+      
+      const Form = ()=>(
+      
+        <form onSubmit={handleSubmit}>
+          <input ref={nameRef} placeholder="Name" />
+          <input
+            ref={quoteRef}
+            placeholder="Quote"
+            // onKeyPress={handleQuote}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      
+      )
+     
 
-      const Form = ()=>{
-        return(
-            <>
-            <form>
-            <input ref ={name} placeholder="Name"/>
-            <input ref = {quotes} placeholder ="quote" />
-            </form>
-            </>
-        )
-      }
+      
 
       const App = () => (
         <div className="App">
-          <h2>Quotify</h2>
+          <h2>Quotify</h2>       
+        
           <Form/>
+          
           <div className="quotes">
             {quotes.map((q, i) => (
               <div key={i}>
@@ -63,6 +89,61 @@
 
       const rootElement = ReactDOM.createRoot(document.getElementById("root"));
       rootElement.render(<App />);
-    </script>
+    </script> -->
+
+<!---------------------------------------- approach two without form tag----------------------------->
+
+
+<script type="text/babel">
+  const quotes = [];
+  const nameRef = React.createRef();
+  const quoteRef = React.createRef();
+
+  const clearInputs = () => {
+    nameRef.current.value = "";
+    quoteRef.current.value = "";
+  };
+
+  // create handleQuote function here
+  const handleQuote = (e) => {
+    const name = nameRef.current.value;
+    const quote = quoteRef.current.value;
+
+    if (!name || !quote) return;
+    if (e.key !== "Enter") return;
+    quotes.unshift({ name, quote });
+    clearInputs();
+    rootElement.render(<App />);
+  };
+
+  const App = () => (
+    <div className="App">
+      <h2>Quotify</h2>
+      
+      
+    <div>
+        <input ref={nameRef} placeholder="Name" />
+        <input
+          ref={quoteRef}
+          placeholder="Quote"
+          onKeyPress={handleQuote}
+        />
+      </div>
+      
+      <div className="quotes">
+        {quotes.map((q, i) => (
+          <div key={i}>
+            <i>"{q.quote}"</i>
+            <b>~ {q.name}</b>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+  rootElement.render(<App />);
+</script>
+
   </body>
 </html>
